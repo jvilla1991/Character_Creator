@@ -1,0 +1,99 @@
+<html>
+	<head>
+		<title>D&amp;D Character Creator</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script>
+			(function() {
+				"use strict";
+				var app = angular.module("characterCreator", []);
+				app.controller("homeController", function($scope) {
+					$scope.character = {
+						name: "",
+						level: 1,
+						class: "",
+						alignment: "",
+						race: ""
+					};
+
+					$scope.classes = [
+						{ key: "barbarian", value: "Barbarian" },
+						{ key: "bard", value: "Bard" },
+						{ key: "cleric", value: "Cleric" },
+						{ key: "druid", value: "Druid" },
+						{ key: "fighter", value: "Fighter" },
+					];
+
+					$scope.alignments = [
+						{ key: "chaotic-good", value: "Chaotic Good" },
+						{ key: "chaotic-neutral", value: "Chaotic Neutral" },
+						{ key: "chaotic-evil", value: "Chaotic Evil" },
+						{ key: "neutral-good", value: "Neutral Good" },
+						{ key: "neutral-neutral", value: "True Neutral" },
+						{ key: "neutral-evil", value: "Neutral Evil" },
+						{ key: "lawful-good", value: "Lawful Good" },
+						{ key: "lawful-neutral", value: "Lawful Neutral" },
+						{ key: "lawful-evil", value: "Lawful Evil" }
+					];
+
+					$scope.races = [
+						{ key: "dragonborn", value: "Dragonborn" },
+						{ key: "dwarf", value: "Dwarf" },
+						{ key: "elf", value: "Elf" },
+						{ key: "gnome", value: "Gnome" },
+						{ key: "halfling", value: "Halfling" },
+						{ key: "half-elf", value: "Half-Elf" },
+						{ key: "human", value: "Human" },
+					];
+
+					$scope.getFlavorText = function() {
+
+					};
+
+					$scope.characterSheet = function() {
+						alert("Your character name is: " + $scope.character.name
+							+ " and he's a fucking " + $scope.character.class);
+					};
+				});
+
+			})();
+		</script>
+	</head>
+	<body ng-app="characterCreator" ng-controller="homeController">
+		<div title="character-name">
+			<input type="text" placeholder="character name" ng-model="character.name" />
+		</div>
+			<input type="number" placeholder="level" min="1" max="20" ng-model="character.level" />
+			<select ng-model="character.class">
+				<option ng-repeat="class in classes" value="{{ class.value }}">{{ class.value }}</option>
+			</select>
+		</div>
+		<div>
+			<label>Alignment</label>
+			<select ng-model="character.alignment">
+				<option ng-repeat="alignment in alignments" value="{{ alignment.value }}">{{ alignment.value }}</option>
+			</select>
+		</div>
+		<div>
+			<label>Race</label>
+			<select ng-model="character.race">
+				<option ng-repeat="race in races" value="{{ race.value }}">{{ race.value }}</option>
+			</select>
+		</div>
+		<br />
+		<br />
+		<div style="border: solid black 1px; padding: 5px">
+			<p>
+				{{ character.race.flavorText }}
+			</p>
+		</div>
+		<br />
+		<br />
+		<div>
+			<p>Name: {{ character.name }}</p>
+			<p>Level: {{ character.level }}</p>
+			<p>Class: {{ character.class }}</p>
+			<p>Alignment: {{ character.alignment }}</p>
+			<p>Race: {{ character.race }}</p>
+		</div>
+	</body>
+</html>
