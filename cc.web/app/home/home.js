@@ -26,7 +26,8 @@
 				{ key: "bard", value: "Bard" },
 				{ key: "cleric", value: "Cleric" },
 				{ key: "druid", value: "Druid" },
-				{ key: "fighter", value: "Fighter" }
+				{ key: "fighter", value: "Fighter" },
+				{ key: "ranger", value: "Ranger"}
 			];
 
 			$scope.alignments = [
