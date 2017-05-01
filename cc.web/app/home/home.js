@@ -9,8 +9,11 @@
 	  });
 	}])
 
-	.controller("homeController", ["$scope",
-		function($scope) {
+	.controller("homeController", ["$scope", "$http",
+		function(
+			$scope,
+			$http
+		) {
 			$scope.character = {
 				name: "",
 				level: 1,
@@ -99,6 +102,14 @@
 				alert("Your character name is: " + $scope.character.name
 					+ " and he's a fucking " + $scope.character.class);
 			};
+
+			// init
+			(function() {
+				$http.get("/test.json")
+					.then(function(res) {
+						$scope.items = res.data;
+					});
+			})();
 		}
 	]);
 })();
